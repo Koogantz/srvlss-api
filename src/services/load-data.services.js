@@ -7,6 +7,7 @@ const { v4 } = require("uuid");
 const baseUrl = "https://swapi.dev/api/";
 
 module.exports.loadByName = async function (name) {
+  console.log("Start loadByName");
   try {
     const response = await axios.get(`${baseUrl}${name}/`); // Obtener recursos con el nombre enviado
     if (response.status !== 200)
@@ -30,11 +31,9 @@ module.exports.loadByName = async function (name) {
 
       console.log("params", params);
 
-      dynamoDbClient
-        .put(params)
-        .then((e) =>
-          console.log(`Success inserted ${objAttrES.id} in [${name}] table`)
-        );
+      dynamoDbClient.put(params, (err, data) => {
+        console.log(`Success inserted ${objAttrES.id} in [${name}] table`);
+      });
     }
 
     return {
@@ -42,6 +41,7 @@ module.exports.loadByName = async function (name) {
       message: `Se crearon correctamente ${results.length} registros en el recurso [${name}]`,
     };
   } catch (error) {
+    console.log(error);
     return {
       status: 500,
       message: error.message || "Ocurrió un error al importar la data",

@@ -11,6 +11,7 @@ module.exports = Joi.object().keys({
       resourcesName.PLANETS.toLowerCase(),
       resourcesName.SPECIES.toLowerCase(),
       resourcesName.STARSHIPS.toLowerCase(),
-      resourcesName.VEHICLES.toLowerCase()
+      resourcesName.VEHICLES.toLowerCase(),
+      resourcesName.STUDENTS.toLowerCase()
     ),
 });

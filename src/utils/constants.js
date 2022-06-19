@@ -5,6 +5,7 @@ module.exports.resourcesName = {
   SPECIES: "Species",
   STARSHIPS: "Starships",
   VEHICLES: "Vehicles",
+  STUDENTS: "Students",
 };
 
 module.exports.resourcesTable = {
@@ -14,4 +15,5 @@ module.exports.resourcesTable = {
   SPECIES: "SPECIES_TABLE",
   STARSHIPS: "STARSHIPS_TABLE",
   VEHICLES: "VEHICLES_TABLE",
+  STUDENTS: "STUDENTS_TABLE",
 };

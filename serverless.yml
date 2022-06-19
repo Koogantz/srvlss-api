@@ -8,13 +8,14 @@ custom:
   SpeciesTable: "Species"
   StarshipsTable: "Starships"
   VehiclesTable: "Vehicles"
+  StudentsTable: "Students"
   serverless-offline:
     httpPort: 4000
 
 provider:
   name: aws
   runtime: nodejs14.x
-  region: us-west-2
+  region: us-east-1
   iam:
     role:
       statements:
@@ -28,6 +29,7 @@ provider:
             - Fn::GetAtt: [SpeciesTable, Arn]
             - Fn::GetAtt: [StarshipsTable, Arn]
             - Fn::GetAtt: [VehiclesTable, Arn]
+            - Fn::GetAtt: [StudentsTable, Arn]
   environment:
     FILMS_TABLE: ${self:custom.FilmsTable}
     PEOPLE_TABLE: ${self:custom.PeopleTable}
@@ -35,6 +37,7 @@ provider:
     SPECIES_TABLE: ${self:custom.SpeciesTable}
     STARSHIPS_TABLE: ${self:custom.StarshipsTable}
     VEHICLES_TABLE: ${self:custom.VehiclesTable}
+    STUDENTS_TABLE: ${self:custom.StudentsTable}
 
 functions:
   api:
@@ -110,6 +113,17 @@ resources:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.VehiclesTable}
+    StudentsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.StudentsTable}
 
 plugins:
   - serverless-offline

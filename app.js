@@ -1,4 +1,3 @@
-
 const express = require("express");
 const serverless = require("serverless-http");
 
@@ -10,13 +9,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-// const port = 5000;
-
 require("./src/controllers/load-data.controller")(app);
-
-// app.listen(port, () => {
-//   console.log(`Server is listening on port ${port}`);
-// });
-
+require("./src/controllers/crud-data.controller")(app);
 
 module.exports.app = serverless(app);

@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit --coverage --verbose"
+    "local": "sls offline",
+    "test": "jest --detectOpenHandles --forceExit --coverage --verbose",
+    "deploy": "sls deploy"
   },
   "name": "srvlss-api",
   "version": "1.0.0",
