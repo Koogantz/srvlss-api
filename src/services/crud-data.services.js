@@ -47,7 +47,7 @@ module.exports.createStudent = async (data) => {
   } catch (error) {
     console.log(error);
     return {
-      status: 200,
+      status: 500,
       message: error.message || `No se pudo crear el estudiante`,
     };
   }

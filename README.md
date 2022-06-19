@@ -6,7 +6,14 @@ framework: v3
 platform: AWS
 language: nodeJS
 priority: 1
+authorLink: 'https://github.com/serverless'
+authorName: 'Serverless, inc.'
+authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 -->
+
+# Swagger documentación de api
+
+https://app.swaggerhub.com/apis-docs/Koogantz/srvlss-api/1.0.0
 
 ## Uso
 
@@ -48,18 +55,18 @@ Luego de ejecutarse las pruebas, podrás ver algo como esto:
 
 ```bash
 -------------------------|---------|----------|---------|---------|-------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 -------------------------|---------|----------|---------|---------|-------------------
-All files                |   91.52 |       50 |      75 |   91.37 |                   
- srvlss-api              |     100 |      100 |     100 |     100 |                   
-  datasource.js          |     100 |      100 |     100 |     100 |                   
- srvlss-api/src/services |   86.11 |       25 |   66.66 |   85.71 |                   
-  load-data.services.js  |   86.11 |       25 |   66.66 |   85.71 | 16,44,53-55       
- srvlss-api/src/utils    |     100 |      100 |     100 |     100 |                   
-  constants.js           |     100 |      100 |     100 |     100 |                   
-  translate.js           |     100 |      100 |     100 |     100 |                   
- srvlss-api/test/utils   |     100 |      100 |     100 |     100 |                   
-  mocks.js               |     100 |      100 |     100 |     100 |                   
+All files                |   91.52 |       50 |      75 |   91.37 |
+ srvlss-api              |     100 |      100 |     100 |     100 |
+  datasource.js          |     100 |      100 |     100 |     100 |
+ srvlss-api/src/services |   86.11 |       25 |   66.66 |   85.71 |
+  load-data.services.js  |   86.11 |       25 |   66.66 |   85.71 | 16,44,53-55
+ srvlss-api/src/utils    |     100 |      100 |     100 |     100 |
+  constants.js           |     100 |      100 |     100 |     100 |
+  translate.js           |     100 |      100 |     100 |     100 |
+ srvlss-api/test/utils   |     100 |      100 |     100 |     100 |
+  mocks.js               |     100 |      100 |     100 |     100 |
 -------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       12 passed, 12 total
@@ -99,4 +106,3 @@ Function names exposed for local invocation by aws-sdk:
 
 Server ready: http://localhost:4000 🚀
 ```
-
