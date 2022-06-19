@@ -1,12 +1,20 @@
 service: srvlss-api
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 custom:
-  tableName: 'users-table-${sls:stage}'
+  FilmsTable: "Films"
+  PeopleTable: "People"
+  PlanetsTable: "Planets"
+  SpeciesTable: "Species"
+  StarshipsTable: "Starships"
+  VehiclesTable: "Vehicles"
+  serverless-offline:
+    httpPort: 4000
 
 provider:
   name: aws
   runtime: nodejs14.x
+  region: us-west-2
   iam:
     role:
       statements:
@@ -14,26 +22,94 @@ provider:
           Action:
             - dynamodb:*
           Resource:
-            - Fn::GetAtt: [ UsersTable, Arn ]
+            - Fn::GetAtt: [FilmsTable, Arn]
+            - Fn::GetAtt: [PeopleTable, Arn]
+            - Fn::GetAtt: [PlanetsTable, Arn]
+            - Fn::GetAtt: [SpeciesTable, Arn]
+            - Fn::GetAtt: [StarshipsTable, Arn]
+            - Fn::GetAtt: [VehiclesTable, Arn]
   environment:
-    USERS_TABLE: ${self:custom.tableName}
+    FILMS_TABLE: ${self:custom.FilmsTable}
+    PEOPLE_TABLE: ${self:custom.PeopleTable}
+    PLANETS_TABLE: ${self:custom.PlanetsTable}
+    SPECIES_TABLE: ${self:custom.SpeciesTable}
+    STARSHIPS_TABLE: ${self:custom.StarshipsTable}
+    VEHICLES_TABLE: ${self:custom.VehiclesTable}
 
 functions:
   api:
-    handler: handler.handler
+    handler: app.app
     events:
-      - httpApi: '*'
+      - httpApi: "*"
 
 resources:
   Resources:
-    UsersTable:
+    FilmsTable:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
-          - AttributeName: userId
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          - AttributeName: userId
+          - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
-        TableName: ${self:custom.tableName}
+        TableName: ${self:custom.FilmsTable}
+    PeopleTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.PeopleTable}
+    PlanetsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.PlanetsTable}
+    SpeciesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.SpeciesTable}
+    StarshipsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.StarshipsTable}
+    VehiclesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.VehiclesTable}
+
+plugins:
+  - serverless-offline
