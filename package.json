@@ -8,17 +8,17 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.7.7",
     "express": "^4.17.1",
     "express-joi-validation": "^5.0.1",
     "joi": "^17.6.0",
     "lodash": "^4.17.21",
     "serverless-http": "^2.7.0",
-    "translate": "^1.4.1",
+    "translate": "^3.0.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "jest": "^28.1.1",
-    "serverless-offline": "^8.8.0"
+    "serverless-offline": "^14.3.3"
   }
 }

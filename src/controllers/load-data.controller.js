@@ -4,7 +4,7 @@ const loadByNameSchema = require("./schemas/load-by-name.schema");
 module.exports = (app) => {
   const { loadByName } = require("../services/load-data.services");
 
-  app.get(
+  app.post(
     "/load-by-name/:name",
     validator.params(loadByNameSchema),
     async (req, res) => {
